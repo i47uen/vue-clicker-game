@@ -1,4 +1,6 @@
-# vue-clicker-game
+# Simple clicker game on VueJS
+[Demo](https://i47uen.github.io/vue-clicker-game/)
+
 
 ## Project setup
 ```
