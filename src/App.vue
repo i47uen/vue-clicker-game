@@ -48,6 +48,7 @@
                 <li><b>Общая стоимость ферм  </b> {{ allCost }} ₿</li>
                 <li><b>Количество ферм       </b> {{ farmsCount }}</li>
               </ul>
+              <div class="reset" @click="$store.commit('ResetAll')">Сбросить игровой прогресс</div>
             </div>
           </div>
         </div>
@@ -56,7 +57,6 @@
 
       </div>
 
-    <button @click="$store.commit('ResetAll')">Reset</button>
 
   </div>
 </template>
@@ -116,8 +116,8 @@
     margin-left: 14px;
   }
   ul{
-    margin-top: 20px;
-    padding-left: 20px;
+    margin-top: 20px !important;
+    padding-left: 20px !important;
     li{
       //font-weight: 600;
       margin-bottom: 15px;
@@ -127,5 +127,14 @@
         float: right;
       }
     }
+  }
+  .reset{
+    float: right;
+    margin-top: 50px;
+    cursor: pointer;
+    color: #999;
+    &:hover{
+      color: #444;
+     }
   }
 </style>

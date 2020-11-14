@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    balance: 0.55,
+    balance: 0.15,
     totalExtracted: 0,
     farms: [
       {name: 'Ферма 1', extraction: 0.001, cost: 0.050, quantity: 0},
@@ -27,10 +27,8 @@ const store = new Vuex.Store({
     addNalog(state, payload){
       state.farms[payload].cost = state.farms[payload].cost + state.farms[payload].cost / 100 * 8
     },
-
-    //  Dev
     ResetAll(state){
-      state.balance = 0.05
+      state.balance = 0.15
       return  state.farms.reduce((s, i) => s = i.quantity = 0, 0)
     }
   },
@@ -45,9 +43,7 @@ const store = new Vuex.Store({
       return state.farms.reduce((s, i) => s = s + i.quantity, 0)
     }
   },
-  plugins: [createPersistedState({
-    paths: ['state']
-  })],
+  plugins: [createPersistedState()],
 
 })
 
