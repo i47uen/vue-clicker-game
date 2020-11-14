@@ -44,7 +44,7 @@
             <div class="column">
               <ul>
                 <li><b>Добыча в секунду      </b> {{ allExtraction }} ₿</li>
-                <li><b>Всего добыто          </b> {{ totalExtracted }}₿</li>
+                <li><b>Всего добыто          </b> {{ totalExtracted }} ₿</li>
                 <li><b>Общая стоимость ферм  </b> {{ allCost }} ₿</li>
                 <li><b>Количество ферм       </b> {{ farmsCount }}</li>
               </ul>
@@ -55,6 +55,8 @@
 
 
       </div>
+
+    <button @click="$store.commit('ResetAll')">Reset</button>
 
   </div>
 </template>
@@ -68,18 +70,17 @@
     },
     computed: {
       allCost(){
-        return store.getters.getCost
+        return store.getters.getCost.toFixed(3)
       },
       allExtraction(){
-        let ext = store.getters.getExtraction.toFixed(3)
-        return ext
+        return  store.getters.getExtraction.toFixed(3)
       },
       farmsCount(){
         return store.getters.getFarmsCount
       },
       totalExtracted(){
         return store.state.totalExtracted.toFixed(3)
-      }
+      },
     },
     created() {
       setInterval(function (){
@@ -97,9 +98,9 @@
     font-size: 22px;
     font-weight: 600;
     span{
-      font-weight: 300;
+      font-weight: 500;
       float: right;
-      color: #888;
+      color: #666;
     }
   }
   .title2{

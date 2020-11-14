@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    balance: 0.05,
+    balance: 0.55,
     totalExtracted: 0,
     farms: [
       {name: 'Ферма 1', extraction: 0.001, cost: 0.050, quantity: 0},
@@ -23,23 +23,31 @@ const store = new Vuex.Store({
     buyFarm(state, payload){
       state.farms[payload].quantity++
       state.balance -= state.farms[payload].cost
+    },
+    addNalog(state, payload){
+      state.farms[payload].cost = state.farms[payload].cost + state.farms[payload].cost / 100 * 8
+    },
+
+    //  Dev
+    ResetAll(state){
+      state.balance = 0.05
+      return  state.farms.reduce((s, i) => s = i.quantity = 0, 0)
     }
   },
   getters: {
     getExtraction(state){
-      let ext = state.farms.reduce((s, i) => s = s + i.extraction * i.quantity, 0)
-      return ext
+      return  state.farms.reduce((s, i) => s = s + i.extraction * i.quantity, 0)
     },
     getCost(state){
-      let cost = state.farms.reduce((s, i) => s = s + i.cost * i.quantity, 0)
-      return cost
+      return  state.farms.reduce((s, i) => s = s + i.cost * i.quantity, 0)
     },
     getFarmsCount(state){
-      let quantity = state.farms.reduce((s, i) => s = s + i.quantity, 0)
-      return quantity
+      return state.farms.reduce((s, i) => s = s + i.quantity, 0)
     }
   },
-  plugins: [createPersistedState()],
+  plugins: [createPersistedState({
+    paths: ['state']
+  })],
 
 })
 
