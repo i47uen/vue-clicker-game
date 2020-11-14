@@ -23,13 +23,15 @@
             message: 'Вы успешно купили '+this.name,
             type: 'is-success',
             duration: 1200,
-            animation: 'fade'
+            animation: 'fade',
+            queue: false
           })
           store.commit('buyFarm', this.index)
         } else {
           this.$buefy.notification.open({
             message: 'Вам не хватает ₿ чтобы купить '+this.name,
-            type: 'is-danger'
+            type: 'is-danger',
+            queue: false
           })
         }
       }
