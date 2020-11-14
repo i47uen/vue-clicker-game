@@ -1,7 +1,7 @@
 <template>
   <div class="container" id="app">
 
-    <b-notification type="is-primary" v-model="isActive" aria-close-label="Close notification">
+    <b-notification type="is-primary" auto-close="true" duration="12000" aria-close-label="Close notification">
       Перед вами простой пример игры на VueJS. Цель игры добывать (биткоины) ₿ и покупать на них новые майнинг фермы.
       Для того, чтобы начать добывать биткоины купите ферму ниже ↓ Чтобы добыть больше ₿ вам нужно купить больше ферм.
       Чем дороже ферма - тем больше она приносит дохода
@@ -91,6 +91,9 @@
 </script>
 
 <style lang="scss">
+  html, body, #app{
+    overflow: hidden !important;
+  }
   #app{
     margin-top: 70px;
   }
